@@ -1,0 +1,74 @@
+.container {
+  height: calc(100% - 40px);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.item {
+    height: calc(100% - 80px);
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    transition: left .5s linear;
+}
+
+.forward {
+    left: 100% !important;
+    transition: left .5s linear;
+}
+
+.backward {
+    left: -100% !important;
+    transition: left .5s linear;
+}
+
+.active {
+    left: 0%;
+    transition: left .5s linear;
+}
+
+.image {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.info {
+    padding-left: 20px;
+}
+
+.action {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.like, .pass {
+    margin: 0 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #ababab;
+}
+
+.like:hover, .pass:hover {
+    filter: brightness(120%);
+}
+
+.like {
+    color: red;
+}
+
+.pass {
+    color: purple;
+}
