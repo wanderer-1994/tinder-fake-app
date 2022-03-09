@@ -2,7 +2,10 @@ Test challenge of [CoderPush](https://coderpush.slite.com/p/note/KBDzEw4AZ7W2qCL
 ## Getting Started
 
 Recommend to use Node version [14.X]. I faced some when develop with Node [16.13.1].
+
 Clone this repo
+
+Install dependencies
 
 ```bash
 npm install
