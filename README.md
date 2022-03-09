@@ -4,9 +4,14 @@ Test challenge of [CoderPush](https://coderpush.slite.com/p/note/KBDzEw4AZ7W2qCL
 Recommend to use Node version [14.X]. I faced some when develop with Node [16.13.1].
 Clone this repo
 
+```bash
+npm install
+```
+
 Database: app connect to remote [mongodb] database server, which always runs. No need further preparation.
 
 ## Start Dev
+
 ```bash
 npm run dev
 # or
