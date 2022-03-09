@@ -1,0 +1,29 @@
+.navWrapper {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ababba;
+}
+
+.navItem {
+    width: calc(100%/3);
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-right: 1px solid #ababba;
+}
+
+.navItem:hover {
+    background-color: antiquewhite;
+}
+
+.navItem:last-child {
+    border-right: none;
+}
+
+.active {
+    background-color: cadetblue !important;
+}
