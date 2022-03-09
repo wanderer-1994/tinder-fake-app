@@ -1,0 +1,24 @@
+.container {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+    position: relative;
+}
+
+.thumbnail {
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    background-position: 50% 0%;
+    border-radius: 50%;
+}
+
+.name {
+    margin-left: 10px;
+}
