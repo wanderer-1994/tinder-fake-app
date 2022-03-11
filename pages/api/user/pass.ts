@@ -1,53 +1,63 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-import UserModel, { User } from '../../../db/models/User'
-import ActionModel, { Action, Tendency } from '../../../db/models/Action'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import UserModel, { User } from '../../../db/models/User';
+import ActionModel, { Tendency } from '../../../db/models/Action';
 
 export type GetResponse = {
-  data: User[]
-  serverStatus?: String
-}
+  data: User[];
+  serverStatus?: String;
+};
 
 export type PostResponse = {
-  success: boolean,
-  error: boolean,
-  errorMessage?: String,
-  serverStatus?: string
-}
+  success: boolean;
+  error: boolean;
+  errorMessage?: String;
+  serverStatus?: string;
+};
 
-export async function addNotFancy (subject: String, target: String): Promise<PostResponse> {
+export async function addNotFancy(
+  subject: String,
+  target: String
+): Promise<PostResponse> {
   try {
-    await ActionModel.findOneAndUpdate({ subject, target }, { tendency: Tendency.PASS }, { upsert: true });
+    await ActionModel.findOneAndUpdate(
+      { subject, target },
+      { tendency: Tendency.PASS },
+      { upsert: true }
+    );
     return {
       success: true,
-      error: false
-    }
+      error: false,
+    };
   } catch (err: Error | any) {
     return {
       success: false,
       error: true,
-      errorMessage: err.message
-    }
+      errorMessage: err.message,
+    };
   }
 }
 
-export async function getNotFancy (subject: String): Promise<GetResponse> {
+export async function getNotFancy(subject: String): Promise<GetResponse> {
   try {
-    let nFancyList = await ActionModel.find({ subject, tendency: Tendency.PASS });
+    const nFancyList = await ActionModel.find({
+      subject,
+      tendency: Tendency.PASS,
+    });
     if (nFancyList && nFancyList.length) {
-      let idList = nFancyList.map(item => item.target);
-      let users = await UserModel.find({ _id: {$in: idList}});
+      const idList = nFancyList.map((item) => item.target);
+      const users = await UserModel.find({ _id: { $in: idList } });
       return {
-        data: users
-      }
+        data: users,
+      };
     }
     return {
-      data: []
-    }
+      data: [],
+    };
   } catch (err) {
     return {
-      data: []
-    }
+      data: [],
+    };
   }
 }
 
@@ -56,12 +66,12 @@ export default async function handler(
   res: NextApiResponse<GetResponse | PostResponse>
 ) {
   if (req.method === 'GET') {
-    let { subjectId } = req.query;
-    let response = await getNotFancy(subjectId as String);
-    res.status(200).json(response)
+    const { subjectId } = req.query;
+    const response = await getNotFancy(subjectId as String);
+    res.status(200).json(response);
   } else if (req.method === 'POST') {
-    let { subject, target } = req.body;
-    let response =  await addNotFancy(subject, target)
-    res.status(200).json(response)
+    const { subject, target } = req.body;
+    const response = await addNotFancy(subject, target);
+    res.status(200).json(response);
   }
 }
