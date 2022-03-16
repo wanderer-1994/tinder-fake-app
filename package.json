@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ./**"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -23,6 +23,7 @@
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
